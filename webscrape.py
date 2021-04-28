@@ -1,0 +1,86 @@
+"""
+Web Scraping with Beautiful Soup
+
+Goal:
+Getting Top recommended books and their summaries from some reputable blogs e.g. 
+"""
+
+from bs4 import BeautifulSoup as bs
+import requests
+import pandas as pd
+import re
+
+# Using James Clear Book Summary website
+path = "https://jamesclear.com/book-summaries?utm_source=designepiclife"
+
+# Create Beautiful Soup Object with URL path
+source = requests.get(path).text
+soup = bs(source, 'html.parser')
+
+""" 
+# Alternatives: Using HTML file to import 
+with open('bookSummary.html') as html_file:
+ 	soup = BeautifulSoup(html_file, 'lxml')
+"""
+
+# Inspect on the html
+# print(soup.prettify())
+
+# Get the book titles
+titles = []
+authors = []
+for count, book in enumerate(soup.find_all('div', class_='sale-book')):
+	if re.search("Bird", book.h3.text):
+		title = "by ".join(book.h3.text.split("by ", 2)[:2]) #[0].strip()
+		author = book.h3.text.split("by ", 2)[2].strip()
+
+	else:
+	 	title = book.h3.text.split("by ")[0].strip()
+	 	author = book.h3.text.split("by ")[1].strip()
+	titles.append(title)
+	authors.append(author)
+
+
+# print()
+print(f"Number of books: {len(titles)}")
+print()
+# print(titles)
+# print(len(titles))
+# print(authors)
+# print(len(authors))
+
+# Scraping the 3 sentences summaries of each book
+
+summaryTexts = []
+
+for counter, summary in enumerate(soup.find_all('p')):
+	# On James Clear's website, the summary text appear in the 4th appearance of paragraph
+	if counter >= 3:
+		if re.search(r":", summary.text):
+			summaryText = summary.text.split(":")[1].strip() 
+			summaryTexts.append(summaryText)
+		
+# print(summaryTexts)
+print(f"Number of Summaries: {len(summaryTexts)}")
+print()
+
+# Get the URLs
+counter = 0
+urls = []
+for url in soup.find_all("a", href=True):
+	if re.search("book-summaries", url['href']) and re.search("https:", url['href']):
+		counter += 1
+		urls.append(url['href'])
+print(f"Number of URLs: {counter}")
+# print(urls)
+
+# Create Data Frame 
+books = {"Title": titles, "Authors": authors, "URL": urls}
+df = pd.DataFrame(books)
+
+# Export to excel
+# 
+export_directory = #"/Fill in your directory path/"
+filename = # e.g. "books_summaries"
+df.to_excel(export_directory + filename + ".xlsx", index=False)
+
