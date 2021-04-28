@@ -72,7 +72,9 @@ books = {"Title": titles, "Authors": authors, "URL": urls}
 df = pd.DataFrame(books)
 
 # Export to excel 
-export_directory = #"/Fill in your directory path/"
+import os
+export_directory = #"/Fill in your directory path"
 filename = # e.g. "books_summaries"
-df.to_excel(export_directory + filename + ".xlsx", index=False)
+file_suffix = ".xslx"
+df.to_excel(os.path.join(export_directory, filename + file_suffix), index=False)
 
