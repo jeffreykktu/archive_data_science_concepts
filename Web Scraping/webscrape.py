@@ -41,18 +41,12 @@ for count, book in enumerate(soup.find_all('div', class_='sale-book')):
 	authors.append(author)
 
 
-# print()
-print(f"Number of books: {len(titles)}")
+print(f"Number of books: {len(titles)} and Number of authors: {len(authors)}")
 print()
-# print(titles)
-# print(len(titles))
-# print(authors)
-# print(len(authors))
 
 # Scraping the 3 sentences summaries of each book
 
 summaryTexts = []
-
 for counter, summary in enumerate(soup.find_all('p')):
 	# On James Clear's website, the summary text appear in the 4th appearance of paragraph
 	if counter >= 3:
@@ -60,7 +54,6 @@ for counter, summary in enumerate(soup.find_all('p')):
 			summaryText = summary.text.split(":")[1].strip() 
 			summaryTexts.append(summaryText)
 		
-# print(summaryTexts)
 print(f"Number of Summaries: {len(summaryTexts)}")
 print()
 
@@ -72,14 +65,13 @@ for url in soup.find_all("a", href=True):
 		counter += 1
 		urls.append(url['href'])
 print(f"Number of URLs: {counter}")
-# print(urls)
+
 
 # Create Data Frame 
 books = {"Title": titles, "Authors": authors, "URL": urls}
 df = pd.DataFrame(books)
 
-# Export to excel
-# 
+# Export to excel 
 export_directory = #"/Fill in your directory path/"
 filename = # e.g. "books_summaries"
 df.to_excel(export_directory + filename + ".xlsx", index=False)
