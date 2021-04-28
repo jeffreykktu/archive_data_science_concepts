@@ -1,2 +1,4 @@
-# webscrap.py
-Data Collection with Beautiful Soup library on book summary, created a pandas dataframe and export as .xslx excel file
+Data Science Projects by Jeff Tu @jeffreykktu
+
+
+My LinkedIn: https://www.linkedin.com/in/jeff-tu-icf-acc-052b7653/
