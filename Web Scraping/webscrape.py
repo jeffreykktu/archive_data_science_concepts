@@ -1,10 +1,14 @@
 """
 Web Scraping with Beautiful Soup
 
-Goal:
-Getting Top recommended books and their summaries from some reputable blogs e.g. 
+Objective:
+In order to study the highly recommended book titles and contents for future use,  
+this script is to extract the Top 50 recommended books and their summaries from a reputable book summary blog, in this case the blog is "James Clear .com"
+url: https://jamesclear.com/book-summaries?utm_source=designepiclife](https://jamesclear.com/book-summaries?utm_source=designepiclife
+
 """
 
+# Import modules
 from bs4 import BeautifulSoup as bs
 import requests
 import pandas as pd
@@ -26,7 +30,7 @@ with open('bookSummary.html') as html_file:
 # Inspect on the html
 # print(soup.prettify())
 
-# Get the book titles
+# Get the book titles and authors
 titles = []
 authors = []
 for count, book in enumerate(soup.find_all('div', class_='sale-book')):
@@ -44,8 +48,8 @@ for count, book in enumerate(soup.find_all('div', class_='sale-book')):
 print(f"Number of books: {len(titles)} and Number of authors: {len(authors)}")
 print()
 
-# Scraping the 3 sentences summaries of each book
 
+# Scraping the 3 sentences summaries of each book
 summaryTexts = []
 for counter, summary in enumerate(soup.find_all('p')):
 	# On James Clear's website, the summary text appear in the 4th appearance of paragraph
@@ -57,7 +61,7 @@ for counter, summary in enumerate(soup.find_all('p')):
 print(f"Number of Summaries: {len(summaryTexts)}")
 print()
 
-# Get the URLs
+# Get the URLs of the detailed book summaries 
 counter = 0
 urls = []
 for url in soup.find_all("a", href=True):
