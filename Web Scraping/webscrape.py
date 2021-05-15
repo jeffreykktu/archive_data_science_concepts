@@ -33,7 +33,7 @@ with open('bookSummary.html') as html_file:
 # Get the book titles and authors
 titles = []
 authors = []
-for count, book in enumerate(soup.find_all('div', class_='sale-book')):
+for book in soup.find_all('div', class_='sale-book'):
 	# Handling cases where there is a word "by" in the book title, only split by the last occurance of "by" 
 	# E.g. Bird by Bird by Anne Lamott => Bird by Bird | Anne Lamott
 	by_count = content.count("by")
@@ -42,8 +42,8 @@ for count, book in enumerate(soup.find_all('div', class_='sale-book')):
 		author = content.split("by", by_count)[by_count].strip()
 
 	else:
-	 	title = book.h3.text.split("by ")[0].strip()
-	 	author = book.h3.text.split("by ")[1].strip()
+	 	title = book.h3.text.split("by")[0].strip()
+	 	author = book.h3.text.split("by")[1].strip()
 	titles.append(title)
 	authors.append(author)
 
@@ -80,8 +80,8 @@ df = pd.DataFrame(books)
 
 # Export to excel 
 import os
-export_directory = # Create your directory path where you want to save your final excel. e.g. "/User/Desktop"
-filename = # Create your excel name. e.g. "books_summaries"
+export_directory = "./" # Or create your directory path where you want to save your final excel. e.g. "/User/Desktop"
+filename = "books_summaries" # Create your excel name. e.g. 
 file_suffix = ".xslx"
 df.to_excel(os.path.join(export_directory, filename + file_suffix), index=False)
 
