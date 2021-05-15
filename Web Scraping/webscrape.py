@@ -34,7 +34,8 @@ with open('bookSummary.html') as html_file:
 titles = []
 authors = []
 for count, book in enumerate(soup.find_all('div', class_='sale-book')):
-	if re.search("Bird", book.h3.text):
+	# Handling special cases where there is a word "by" in the book title, only split by the second occurance of "by" 
+	if re.search("Bird", book.h3.text) or if re.search("Superhuman", book.h3.text):
 		title = "by ".join(book.h3.text.split("by ", 2)[:2]) #[0].strip()
 		author = book.h3.text.split("by ", 2)[2].strip()
 
