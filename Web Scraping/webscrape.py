@@ -77,8 +77,8 @@ df = pd.DataFrame(books)
 
 # Export to excel 
 import os
-export_directory = #"/Fill in your directory path"
-filename = # e.g. "books_summaries"
+export_directory = # Create your directory path where you want to save your final excel. e.g. "/User/Desktop"
+filename = # Create your excel name. e.g. "books_summaries"
 file_suffix = ".xslx"
 df.to_excel(os.path.join(export_directory, filename + file_suffix), index=False)
 
