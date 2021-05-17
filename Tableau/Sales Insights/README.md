@@ -1,4 +1,4 @@
-#Tableau Desktop - Practice
+# Tableau Desktop - Practice
 This is a practice project of using Tableau Desktop, based on the walk through from the linked source.
 
 - Dark mode Background Graphic formatting
