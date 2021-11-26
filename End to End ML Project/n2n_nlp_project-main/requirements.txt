@@ -1,0 +1,8 @@
+numpy==1.19.2
+pandas==1.2.3
+streamlit==0.84.2
+altair==4.1.0
+joblib==1.0.1
+seaborn==0.11.1
+neattext==0.1.0
+scikit_learn==0.24.2
