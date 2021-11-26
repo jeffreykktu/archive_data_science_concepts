@@ -1,4 +1,4 @@
-My first practice on doing an end to end Linear Regression ML project
+# End-to-end Linear Regression ML project
 
 Mainly sharpening on Data Cleaning and Question Asking
 
