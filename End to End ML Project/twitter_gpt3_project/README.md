@@ -11,7 +11,7 @@ This project uses Python Tweepy package to access Twitter API. A dummy twitter a
 - The get-tweets.py will fetch each twitter users' latest 50 tweets in /tweets/<username>.txt. (in this case @jeffreykktu and @lexfridman)
 - The gpt3_openai.py is used to create tweet:
   - The tweet is set to start with the phrase: "I wish";
-  - The prompt is "Generate tweets imilar to the followings: <paste lines of extracted tweets from the .txt files>
+  - The prompt is "Generate tweets similar to the followings: <paste lines of extracted tweets from the .txt files>
   - It will print out a new tweet.
 
   
