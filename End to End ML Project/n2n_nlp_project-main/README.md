@@ -27,4 +27,4 @@
 - altair
 
 
-Learning Reference: https://www.youtube.com/watch?v=tLsg01D6k6g&t=1s
+Reference: Jesse E.Agbe, Streamlit documentation
