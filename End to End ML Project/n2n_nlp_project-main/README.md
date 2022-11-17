@@ -1,4 +1,4 @@
-# End-to-End NLP Data Science Project (Python)
+# NLP Sentiment Analysis Project (Python)
 
 ### Objective
 - Practise creating a Text Classifier web app that provides sentiment analysis of user-input English text.
