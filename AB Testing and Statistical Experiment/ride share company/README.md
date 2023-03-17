@@ -3,6 +3,11 @@
 ## Objective: 
 Given AB Testing ride data, design a ride cancellation policy for rider.
 
+## Experiment details:
+- 3 experiment groups for different penalty fee price ($5.0, $3.0, $1.0), each with ~180,000 data point
+- Duration: 42 days (April - May)
+- Location: Los Angeles, U.S.
+
 Note: For privacy reasons, Data was not uploaded and company name is masked.
 
 
